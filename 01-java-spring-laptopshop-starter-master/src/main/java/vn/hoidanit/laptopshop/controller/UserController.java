@@ -10,20 +10,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import vn.hoidanit.laptopshop.domain.User;
+import vn.hoidanit.laptopshop.repository.UserRepository;
 import vn.hoidanit.laptopshop.service.UserService;
 
 @Controller
 public class UserController {
-    private UserService userService;
+    private final UserService userService;
+
+
 
     public UserController(UserService thService) {
         userService = thService;
+      
     }
 
     @RequestMapping("/")
     public String getHomePage(Model model) {
-        String test = userService.handleHello();
-        model.addAttribute("nam", test);
+        model.addAttribute("nam", "test");
         model.addAttribute("hoidanit", "spring mvc");
         return "hello";
     }
@@ -36,7 +39,8 @@ public class UserController {
 //@ModelAttribute dùng để lấy dữ liệu từ form, truyền vào một đối tượng (đã có class định nghĩa sẵn), và Spring tự động gán giá trị cho các thuộc tính thông qua setter của đối tượng đó.
      @RequestMapping(value = "/admin/user/create1", method = RequestMethod.POST)
     public String createUser( @ModelAttribute("newUser") User thUser) {
-        System.out.println("run here"+thUser);
+        System.out.println(thUser);
+        userService.handleSaveUser(thUser);
         return "hello";
     }
 }
