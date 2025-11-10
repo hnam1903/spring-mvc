@@ -40,4 +40,9 @@ public class UserService {
 
     }
 
+    public User getUserById(long id) {
+        User user = userRepository.findById(id);
+        return user;
+    }
+
 }
