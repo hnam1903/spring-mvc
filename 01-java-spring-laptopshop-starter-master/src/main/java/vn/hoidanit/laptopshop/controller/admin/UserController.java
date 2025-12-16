@@ -95,7 +95,7 @@ public class UserController {
         } 
         //validation
         if (newUserBindingResult.hasErrors()) {
-            return "/admin/user/create";
+            return "admin/user/create";
             
         }
 
