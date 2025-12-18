@@ -67,7 +67,7 @@ public SpringSessionRememberMeServices rememberMeServices() {
                 .authorizeHttpRequests(authorize -> authorize
                      .dispatcherTypeMatchers(DispatcherType.FORWARD,
                                 DispatcherType.INCLUDE) .permitAll()
-                     .requestMatchers("/","/login", "/client/**", "/product/**",
+                     .requestMatchers("/","/login", "/client/**", "/product/**","/register",
                       "/css/**", "/js/**", "/images/**").permitAll()
 
                         // hasRole dc spring security luu la ROLE_ADMIN nen phan CustomUserDetail phai noi chuoi "ROLE_"+user.getRole().getName()
